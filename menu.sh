@@ -11,11 +11,16 @@ if [[ $1 == "-h" ]] ; then
 elif [[ $1 == "-d" ]] ; then
 	echo "Esta opcion borrara todos los archivos generados por este programa y matara todos los procesos que inicio ¿estas seguro de esto?[(Y)es, continua/(N)o, salir.]"
 	read SEGURO_BORRAR
-	if [[ $SEGURO_BORRAR == "n" || $SEGURO_BORRAR == "N" ]] ; then
+	if [[ $SEGURO_BORRAR != "y" && $SEGURO_BORRAR != "Y" ]] ; then
 		exit
 	fi
-	#aca deberia estar el codigo para la opcion -d
+	if [ -d /$HOME/EPNro1 ];then
+		rm -r /$HOME/EPNro1
+		echo "eliminamos el directorio EPNro1, junto con todo su contenido"
+	else
+		echo "No encontramos el directorio "$HOME"/EPNro1"
 	exit
+	fi
 elif [[ $1 == "-o"[1-5] ]] ; then 
 	OPTION=$( echo "$1" | sed "s/[^1-5.]*//g" ) #saca el numero de la flag -o[1-5] y lo guarda en OPICON.
 	INITIAL_FLAG='y'
@@ -51,8 +56,8 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			read padron
 
 			#cualquiera de las dos opciones funciona
-			cat /$HOME/EPNro1/salida/FILENAME.txt | grep $padron
-			#grep "$padron" "/$HOME/EPNro1/salida/FILENAME.txt"
+			cat /$HOME/EPNro1/salida/*.txt | grep $padron
+			#grep "$padron" "/$HOME/EPNro1/salida/*.txt"
 			;;
 		6)
 			echo "saliendo..."
