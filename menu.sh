@@ -47,6 +47,12 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			;;
 		5)
 			echo "opcion 5 seleccionada"
+			echo -n "ingrese un numero de padron: "
+			read padron
+
+			#cualquiera de las dos opciones funciona
+			cat /$HOME/EPNro1/salida/FILENAME.txt | grep $padron
+			#grep "$padron" "/$HOME/EPNro1/salida/FILENAME.txt"
 			;;
 		6)
 			echo "saliendo..."
