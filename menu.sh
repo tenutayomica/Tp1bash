@@ -6,7 +6,7 @@ KEEP_WORKING='y'
 INITIAL_FLAG='n'
 
 mostrar_ordenados(){
-	if[ ! -f "$FILENAME"]; then
+	if [ ! -f "$FILENAME" ]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
@@ -15,7 +15,7 @@ mostrar_ordenados(){
 }
 
 mostrar_top10(){
-	if[ ! -f "$FILENAME"]; then
+	if [ ! -f "$FILENAME" ]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
@@ -23,6 +23,15 @@ mostrar_top10(){
 		sort -k4 -rn "FILENAME" | head -10 | column -t -s ' '	
 }
 
+opcion_dos(){
+ if [[ -d "$HOME/EPNro1" ]]; then
+     echo "ingrese nombre para nuevo archivo"
+     read nombrearch
+     bash "$HOME/EPNro1/consolidar.sh" "$nombrearch" & 
+ else
+    echo "crear entorno seleccionando opción 1"
+ fi
+}
 
 if [[ $1 == "-h" ]] ; then
 	echo "Imprimir mensaje de ayuda"
@@ -62,7 +71,7 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			;;
 		2)
 			echo "opcion 2 seleccionada "
-			;;
+                        opcion_dos;;
 		3)
 			echo "opcion 3 seleccionada"
 			mostrar_ordenados ;;
