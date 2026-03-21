@@ -5,6 +5,25 @@ OPTION=0
 KEEP_WORKING='y'
 INITIAL_FLAG='n'
 
+mostrar_ordenados(){
+	if[ ! -f "$FILENAME"]; then
+		echo "El archivo $FILENAME no existe."
+		return 1;
+	fi
+	echo "Listado de alumnos ordenados por número de padrón:"
+	sort -n "$FILENAME" | column -t -s ' '
+}
+
+mostrar_top10(){
+	if[ ! -f "$FILENAME"]; then
+		echo "El archivo $FILENAME no existe."
+		return 1;
+	fi
+		echo "Las 10 notas más altas:"
+		sort -k4 -rn "FILENAME" | head -10 | column -t -s ' '	
+}
+
+
 if [[ $1 == "-h" ]] ; then
 	echo "Imprimir mensaje de ayuda"
 	exit
@@ -46,10 +65,11 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			;;
 		3)
 			echo "opcion 3 seleccionada"
-			;;
+			mostrar_ordenados ;;
 		4)
 			echo "opcion 4 seleccionada "
-			;;
+                        mostrar_top10 ;;
+
 		5)
 			echo "opcion 5 seleccionada"
 			echo -n "ingrese un numero de padron: "
@@ -61,7 +81,7 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			;;
 		6)
 			echo "saliendo..."
-			exit
+    			exit
 			;;
 	esac
 
