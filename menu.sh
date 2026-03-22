@@ -6,7 +6,7 @@ KEEP_WORKING='y'
 INITIAL_FLAG='n'
 
 mostrar_ordenados(){
-	if [ ! -f "$FILENAME" ]; then
+	if [[ ! -f "$FILENAME" ]]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
@@ -15,7 +15,7 @@ mostrar_ordenados(){
 }
 
 mostrar_top10(){
-	if [ ! -f "$FILENAME" ]; then
+	if [[ ! -f "$FILENAME" ]]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
@@ -77,7 +77,7 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			mostrar_ordenados ;;
 		4)
 			echo "opcion 4 seleccionada "
-                        mostrar_top10 ;;
+                        mostrar_top10 ;; 
 
 		5)
 			echo "opcion 5 seleccionada"
