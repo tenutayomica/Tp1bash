@@ -20,7 +20,7 @@ mostrar_top10(){
 		return 1;
 	fi
 		echo "Las 10 notas más altas:"
-		sort -k4 -rn "FILENAME" | head -10 | column -t -s ' '	
+		sort -k5 -rn "$FILENAME" | head -10 | column -t -s ' '	
 }
 
 opcion_dos(){
@@ -28,6 +28,7 @@ opcion_dos(){
      echo "ingrese nombre para nuevo archivo"
      read nombrearch
      bash "$HOME/EPNro1/consolidar.sh" "$nombrearch" & 
+	export FILENAME="$HOME/EPNro1/salida/${nombrearch}.txt"
  else
     echo "crear entorno seleccionando opción 1"
  fi
@@ -69,10 +70,10 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 		1)
 			echo "opcion 1 seleccionada"
 			mkdir $HOME/EPNro1
-            mkdir $HOME/EPNro1/entrada
-            mkdir $HOME/EPNro1/salida
+	   	        mkdir $HOME/EPNro1/entrada
+		 mkdir $HOME/EPNro1/salida
             mkdir $HOME/EPNro1/procesando
-            cp $(pwd)/consolidar.sh $HOME/EPNro1/salida/
+            cp $(pwd)/consolidar.sh $HOME/EPNro1
 			;;
 		2)
 			echo "opcion 2 seleccionada "

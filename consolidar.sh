@@ -3,7 +3,7 @@
 nom="$1"
 FILENAME="$HOME/EPNro1/salida/${nom}.txt"
 entradaPath="$HOME/EPNro1/entrada"
-procesandoPath="$HOME/EPNro1/procesando"
+procesadoPath="$HOME/EPNro1/procesado"
  
  if [[ ! -f "$FILENAME" ]]; then
    touch "$FILENAME"
@@ -15,7 +15,7 @@ procesandoPath="$HOME/EPNro1/procesando"
      if  ! grep -q -w "$padron" "$FILENAME" ; then
       cat "$file" >> "$FILENAME"
      fi
-     mv "$file" "$procesandoPath"
+     mv "$file" "$procesadoPath"
      echo "proceso finalizado"
   fi
  done
