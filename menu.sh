@@ -68,6 +68,11 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 	case ${OPTION} in
 		1)
 			echo "opcion 1 seleccionada"
+			mkdir $HOME/EPNro1
+            mkdir $HOME/EPNro1/entrada
+            mkdir $HOME/EPNro1/salida
+            mkdir $HOME/EPNro1/procesando
+            cp $(pwd)/consolidar.sh $HOME/EPNro1/salida/
 			;;
 		2)
 			echo "opcion 2 seleccionada "
