@@ -34,6 +34,16 @@ opcion_dos(){
  fi
 }
 
+opcion_cinco(){
+  echo -n "ingrese un numero de padron: "
+  read padron
+
+  #cualquiera de las dos opciones funciona
+  cat $FILENAME | grep $padron
+  #grep "$padron" "/$HOME/EPNro1/salida/*.txt"
+
+
+}
 if [[ $1 == "-h" ]] ; then
 	echo "Imprimir mensaje de ayuda"
 	exit
@@ -83,17 +93,11 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			mostrar_ordenados ;;
 		4)
 			echo "opcion 4 seleccionada "
-                        mostrar_top10 ;; 
+                        mostrar_top10 ;;
 
 		5)
 			echo "opcion 5 seleccionada"
-			echo -n "ingrese un numero de padron: "
-			read padron
-
-			#cualquiera de las dos opciones funciona
-			cat /$HOME/EPNro1/salida/*.txt | grep $padron
-			#grep "$padron" "/$HOME/EPNro1/salida/*.txt"
-			;;
+			opcion_cinco ;;
 		6)
 			echo "saliendo..."
     			exit
