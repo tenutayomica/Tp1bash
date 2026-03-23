@@ -8,8 +8,8 @@ procesadoPath="$HOME/EPNro1/procesado"
  if [[ ! -f "$filePath" ]]; then
    touch "$filePath"
  fi
-   for file in "$entradaPath"/*;
-    do
+while true; do
+   for file in "$entradaPath"/*; do
     if [[ -f "$file" ]]; then  
      padron=$(awk '{print $1}' "$file")
      if  ! grep -q -w "$padron" "$filePath" ; then
@@ -17,7 +17,9 @@ procesadoPath="$HOME/EPNro1/procesado"
      fi
      mv "$file" "$procesadoPath"
      echo "proceso finalizado"
-  fi
+     fi
+    done
+    sleep 2
  done
 
 
