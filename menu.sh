@@ -4,25 +4,25 @@ MENU="Elige uno:\n\t(1) Crear entorno.\n\t(2) Correr proceso\n\t(3) Mostrar list
 OPTION=0
 KEEP_WORKING='y'
 INITIAL_FLAG='n'
-ARCHIVE = "$HOME/EPNro1/salida/${FILENAME}.txt"
+filePath= "$HOME/EPNro1/salida/${FILENAME}.txt"
 
 
 mostrar_ordenados(){
-	if [[ ! -f "$ARCHIVE" ]]; then
+	if [[ ! -f "$filePath" ]]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
 	echo "Listado de alumnos ordenados por número de padrón:"
-	sort -n "$ARCHIVE" | column -t -s ' '
+	sort -n "$filePath" | column -t -s ' '
 }
 
 mostrar_top10(){
-	if [[ ! -f "$ARCHIVE" ]]; then
+	if [[ ! -f "$filePath" ]]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
 		echo "Las 10 notas más altas:"
-		sort -k5 -rn "$ARCHIVE" | head -10 | column -t -s ' '	
+		sort -k5 -rn "$filePath" | head -10 | column -t -s ' '	
 }
 
 opcion_dos(){
