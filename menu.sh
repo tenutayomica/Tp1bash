@@ -48,13 +48,14 @@ elif [[ $1 == "-d" ]] ; then
 	echo "Esta opcion borrara todos los archivos generados por este programa y matara todos los procesos que inicio ¿estas seguro de esto?[(Y)es, continua/(N)o, salir.]"
 	read SEGURO_BORRAR
 	if [[ $SEGURO_BORRAR != "y" && $SEGURO_BORRAR != "Y" ]] ; then
-		exit
+		exit 1
 	fi
 	if [ -d /$HOME/EPNro1 ];then
 		rm -r /$HOME/EPNro1
 		echo "eliminamos el directorio EPNro1, junto con todo su contenido"
 		pkill -f consolidar.sh
 		echo "proceso consolidar.sh finalizado"
+		exit 1
 	else
 		echo "No encontramos el directorio "$HOME"/EPNro1"
 	exit 1

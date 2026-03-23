@@ -20,7 +20,6 @@ while true; do
     done
     sleep 2
 
-done
-   echo "proceso finalizado"		
+done		
 
 
