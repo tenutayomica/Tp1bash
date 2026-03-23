@@ -14,11 +14,13 @@ while true; do
      padron=$(awk '{print $1}' "$file")
      if  ! grep -q -w "$padron" "$filePath" ; then
       cat "$file" >> "$filePath"
+      echo "" >> "$filePath"
      fi
      mv "$file" "$procesadoPath"
      fi
+     
     done
-    sleep 2
+   sleep 2
 
 done		
 

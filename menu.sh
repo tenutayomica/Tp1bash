@@ -40,12 +40,24 @@ mostrar_top10(){
 		sort -k5 -rn "$filePath" | head -10 | column -t -s ' '	
 }
 
-opcion_dos(){
+correr_proceso(){
  if [[ -d "$HOME/EPNro1" ]]; then
      bash "$HOME/EPNro1/consolidar.sh" "$FILENAME" & 
+	echo $! > "$HOME/EPNro1/consolidar.pid"
+
  else
     echo "crear entorno seleccionando opción 1"
  fi
+}
+
+buscar_padron(){
+			
+			echo -n "ingrese un numero de padron: "
+			read padron
+
+			#cualquiera de las dos opciones funciona
+			cat "$filePath" | grep $padron
+
 }
 
 if [[ $1 == "-h" ]] ; then
@@ -58,10 +70,11 @@ elif [[ $1 == "-d" ]] ; then
 		exit 0
 	fi
 	if [ -d /$HOME/EPNro1 ];then
+		PID_CONSOLIDAR=$(cat "$HOME/EPNro1/consolidar.pid")
+		kill "$PID_CONSOLIDAR" 2>/dev/null
+		echo "proceso consolidar.sh finalizado"
 		rm -r /$HOME/EPNro1
 		echo "eliminamos el directorio EPNro1, junto con todo su contenido"
-		pkill -f consolidar.sh
-		echo "proceso consolidar.sh finalizado"
 		exit 0
 	else
 		echo "No encontramos el directorio "$HOME"/EPNro1"
@@ -85,10 +98,10 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 
 	case ${OPTION} in
 		1)
-			crear_entorno;;
+			crear_entorno ;;
 		2)
 			echo "opcion 2 seleccionada "
-            opcion_dos;;
+            correr_proceso ;;
 		3)
 			echo "opcion 3 seleccionada"
 			mostrar_ordenados ;;
@@ -98,13 +111,7 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 
 		5)
 			echo "opcion 5 seleccionada"
-			echo -n "ingrese un numero de padron: "
-			read padron
-
-			#cualquiera de las dos opciones funciona
-			cat /$HOME/EPNro1/salida/*.txt | grep $padron
-			#grep "$padron" "/$HOME/EPNro1/salida/*.txt"
-			;;
+			buscar_padron ;;
 		6)
 			echo "saliendo..."
     			exit 0
