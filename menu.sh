@@ -1,10 +1,5 @@
 #!/bin/bash
 
-MENU="Elige uno:\n\t(1) Crear entorno.\n\t(2) Correr proceso\n\t(3) Mostrar listado de alumnos(salida/FILENAME.txt) ordenado por numero de padrón.\n\t(4) Mostrar las 10 notas mas altas del listado (salida/FILENAME.txt).\n\t(5) Buscar estudiante por numero de padrón.\n\t(6) Salir.\nEscribe el NUMERO de opcion que desees: "
-OPTION=0
-KEEP_WORKING='y'
-INITIAL_FLAG='n'
-filePath="$HOME/EPNro1/salida/${FILENAME}.txt"
 
 # Verificación de existencia o no nulidad de FILENAME y no es -d
 
@@ -13,6 +8,14 @@ if [[ -z "$FILENAME" ]] && [[ "$1" != "-d" ]]; then
 	echo "Defínila en la terminal con: export FILENAME=nombre_archivo"
 	exit 1
 fi
+
+
+MENU="Elige uno:\n\t(1) Crear entorno.\n\t(2) Correr proceso\n\t(3) Mostrar listado de alumnos(salida/FILENAME.txt) ordenado por numero de padrón.\n\t(4) Mostrar las 10 notas mas altas del listado (salida/FILENAME.txt).\n\t(5) Buscar estudiante por numero de padrón.\n\t(6) Salir.\nEscribe el NUMERO de opcion que desees: "
+OPTION=0
+KEEP_WORKING='y'
+INITIAL_FLAG='n'
+filePath="$HOME/EPNro1/salida/${FILENAME}.txt"
+
 
 crear_entorno(){
 	
