@@ -48,17 +48,17 @@ elif [[ $1 == "-d" ]] ; then
 	echo "Esta opcion borrara todos los archivos generados por este programa y matara todos los procesos que inicio ¿estas seguro de esto?[(Y)es, continua/(N)o, salir.]"
 	read SEGURO_BORRAR
 	if [[ $SEGURO_BORRAR != "y" && $SEGURO_BORRAR != "Y" ]] ; then
-		exit 1
+		exit 0
 	fi
 	if [ -d /$HOME/EPNro1 ];then
 		rm -r /$HOME/EPNro1
 		echo "eliminamos el directorio EPNro1, junto con todo su contenido"
 		pkill -f consolidar.sh
 		echo "proceso consolidar.sh finalizado"
-		exit 1
+		exit 0
 	else
 		echo "No encontramos el directorio "$HOME"/EPNro1"
-	exit 1
+		exit 1
 	fi
 elif [[ $1 == "-o"[1-5] ]] ; then 
 	OPTION=$( echo "$1" | sed "s/[^1-5.]*//g" ) #saca el numero de la flag -o[1-5] y lo guarda en OPICON.
@@ -106,7 +106,7 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			;;
 		6)
 			echo "saliendo..."
-    			exit
+    			exit 0
 			;;
 	esac
 
