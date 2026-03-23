@@ -50,6 +50,7 @@ correr_proceso(){
  fi
 }
 
+<<<<<<< HEAD
 buscar_padron(){
 			
 			echo -n "ingrese un numero de padron: "
@@ -60,6 +61,18 @@ buscar_padron(){
 
 }
 
+=======
+opcion_cinco(){
+  echo -n "ingrese un numero de padron: "
+  read padron
+
+  #cualquiera de las dos opciones funciona
+  cat $FILENAME | grep $padron
+  #grep "$padron" "/$HOME/EPNro1/salida/*.txt"
+
+
+}
+>>>>>>> e0e0ba0e7c6c3900a3dfd01929f9f56974dc33e5
 if [[ $1 == "-h" ]] ; then
 	echo "Imprimir mensaje de ayuda"
 	exit
@@ -107,11 +120,19 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			mostrar_ordenados ;;
 		4)
 			echo "opcion 4 seleccionada "
+<<<<<<< HEAD
             mostrar_top10 ;; 
 
 		5)
 			echo "opcion 5 seleccionada"
 			buscar_padron ;;
+=======
+                        mostrar_top10 ;;
+
+		5)
+			echo "opcion 5 seleccionada"
+			opcion_cinco ;;
+>>>>>>> e0e0ba0e7c6c3900a3dfd01929f9f56974dc33e5
 		6)
 			echo "saliendo..."
     			exit 0
