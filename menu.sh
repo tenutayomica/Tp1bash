@@ -4,7 +4,7 @@ MENU="Elige uno:\n\t(1) Crear entorno.\n\t(2) Correr proceso\n\t(3) Mostrar list
 OPTION=0
 KEEP_WORKING='y'
 INITIAL_FLAG='n'
-filePath= "$HOME/EPNro1/salida/${FILENAME}.txt"
+filePath="$HOME/EPNro1/salida/${FILENAME}.txt"
 
 
 mostrar_ordenados(){
