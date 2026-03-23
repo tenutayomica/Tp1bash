@@ -53,9 +53,11 @@ elif [[ $1 == "-d" ]] ; then
 	if [ -d /$HOME/EPNro1 ];then
 		rm -r /$HOME/EPNro1
 		echo "eliminamos el directorio EPNro1, junto con todo su contenido"
+		pkill -f consolidar.sh
+		echo "proceso consolidar.sh finalizado"
 	else
 		echo "No encontramos el directorio "$HOME"/EPNro1"
-	exit
+	exit 1
 	fi
 elif [[ $1 == "-o"[1-5] ]] ; then 
 	OPTION=$( echo "$1" | sed "s/[^1-5.]*//g" ) #saca el numero de la flag -o[1-5] y lo guarda en OPICON.
