@@ -11,6 +11,7 @@ fi
 
 
 MENU="Elige uno:\n\t(1) Crear entorno.\n\t(2) Correr proceso\n\t(3) Mostrar listado de alumnos(salida/FILENAME.txt) ordenado por numero de padrón.\n\t(4) Mostrar las 10 notas mas altas del listado (salida/FILENAME.txt).\n\t(5) Buscar estudiante por numero de padrón.\n\t(6) Salir.\nEscribe el NUMERO de opcion que desees: "
+MENSAJE_AYUDA="Programa desarrollado para el EP0 de Introduccion al Desarrollo del Software - catedra Lanzilota. primer cuatrimestre del 2026 \nuso: ./menu.sh [-h] [-d] [-o[1-5]]:\nResumen de comandos:\n\t-h\tImprime un mensaje de ayuda y termina\n\t-d\tElimina todos los archivos y procesos creados por el programa\n\t-o[1-5]\tEjecuta la opcion que sigue al -o del uno al 5\nOpciones:\n\t1) Crea el entorno, dentro de \$HOME llamado EPNro1, dentro del cual se llevan a cabo los procesos del programa.\n\t2) Ejecuta el script consolidar.sh el cual toma los archivos en \$HOME/EPNro1/entrada y adjunta toda su informacion al final del archivo FILENAME.txt y luego envia el archivo original a la carpeta \$HOME/procesado\n\t3) Muestra por pantalla el listado de alumnos en FILENAME.txt ordenados por numero de padron\n\t4) Muestra las 10 notas mas altas del listado de FILENAME.txt\n\tBusca los datos de un alumno por numero de padron\n"
 OPTION=0
 KEEP_WORKING='y'
 INITIAL_FLAG='n'
@@ -62,7 +63,7 @@ buscar_padron(){
 }
 
 if [[ $1 == "-h" ]] ; then
-	echo "Imprimir mensaje de ayuda"
+	echo -e $MENSAJE_AYUDA
 	exit
 elif [[ $1 == "-d" ]] ; then
 	echo "Esta opcion borrara todos los archivos generados por este programa y matara todos los procesos que inicio ¿estas seguro de esto?[(Y)es, continua/(N)o, salir.]"
