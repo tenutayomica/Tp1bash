@@ -6,6 +6,14 @@ KEEP_WORKING='y'
 INITIAL_FLAG='n'
 filePath="$HOME/EPNro1/salida/${FILENAME}.txt"
 
+# Verificación de existencia de FILENAME y no es -d
+
+if [[-z "$FILENAME" ]] && [[ "$1" != "-d" ]]; then
+	echo "Error: Variable de entorno FILENAME no definida."
+	echo "Defínila en la terminal con: export FILENAME=nombre_archivo"
+	exit 1
+fi
+
 
 mostrar_ordenados(){
 	if [[ ! -f "$filePath" ]]; then
