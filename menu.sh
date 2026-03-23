@@ -14,6 +14,13 @@ if [[ -z "$FILENAME" ]] && [[ "$1" != "-d" ]]; then
 	exit 1
 fi
 
+crear_entorno(){
+	echo "opcion 1 seleccionada"
+	mkdir $HOME/EPNro1
+	mkdir $HOME/EPNro1/entrada	
+	mkdir $HOME/EPNro1/salida
+	mkdir $HOME/EPNro1/procesado
+	cp $(pwd)/consolidar.sh $HOME/EPNro1
 
 mostrar_ordenados(){
 	if [[ ! -f "$filePath" ]]; then
@@ -78,13 +85,7 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 
 	case ${OPTION} in
 		1)
-			echo "opcion 1 seleccionada"
-			mkdir $HOME/EPNro1
-	   	        mkdir $HOME/EPNro1/entrada
-			mkdir $HOME/EPNro1/salida
-        		mkdir $HOME/EPNro1/procesado
-          		cp $(pwd)/consolidar.sh $HOME/EPNro1
-			;;
+			crear_entorno;;
 		2)
 			echo "opcion 2 seleccionada "
                         opcion_dos;;
