@@ -6,7 +6,7 @@ KEEP_WORKING='y'
 INITIAL_FLAG='n'
 filePath="$HOME/EPNro1/salida/${FILENAME}.txt"
 
-# Verificación de existencia de FILENAME y no es -d
+# Verificación de existencia o no nulidad de FILENAME y no es -d
 
 if [[ -z "$FILENAME" ]] && [[ "$1" != "-d" ]]; then
 	echo "Error: Variable de entorno FILENAME no definida."
