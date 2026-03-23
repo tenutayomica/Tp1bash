@@ -15,7 +15,7 @@ if [[ -z "$FILENAME" ]] && [[ "$1" != "-d" ]]; then
 fi
 
 crear_entorno(){
-	echo "opcion 1 seleccionada"
+	
 	mkdir $HOME/EPNro1
 	mkdir $HOME/EPNro1/entrada	
 	mkdir $HOME/EPNro1/salida
@@ -50,29 +50,14 @@ correr_proceso(){
  fi
 }
 
-<<<<<<< HEAD
 buscar_padron(){
 			
 			echo -n "ingrese un numero de padron: "
 			read padron
-
-			#cualquiera de las dos opciones funciona
 			cat "$filePath" | grep $padron
 
 }
 
-=======
-opcion_cinco(){
-  echo -n "ingrese un numero de padron: "
-  read padron
-
-  #cualquiera de las dos opciones funciona
-  cat $FILENAME | grep $padron
-  #grep "$padron" "/$HOME/EPNro1/salida/*.txt"
-
-
-}
->>>>>>> e0e0ba0e7c6c3900a3dfd01929f9f56974dc33e5
 if [[ $1 == "-h" ]] ; then
 	echo "Imprimir mensaje de ayuda"
 	exit
@@ -111,28 +96,22 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 
 	case ${OPTION} in
 		1)
+			echo "opcion 1 seleccionada"
 			crear_entorno ;;
 		2)
-			echo "opcion 2 seleccionada "
+			echo "opcion 2 seleccionada"
             correr_proceso ;;
 		3)
 			echo "opcion 3 seleccionada"
 			mostrar_ordenados ;;
 		4)
-			echo "opcion 4 seleccionada "
-<<<<<<< HEAD
+			echo "opcion 4 seleccionada"
             mostrar_top10 ;; 
 
 		5)
 			echo "opcion 5 seleccionada"
 			buscar_padron ;;
-=======
-                        mostrar_top10 ;;
 
-		5)
-			echo "opcion 5 seleccionada"
-			opcion_cinco ;;
->>>>>>> e0e0ba0e7c6c3900a3dfd01929f9f56974dc33e5
 		6)
 			echo "saliendo..."
     			exit 0
