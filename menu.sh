@@ -21,7 +21,7 @@ crear_entorno(){
 	mkdir $HOME/EPNro1/salida
 	mkdir $HOME/EPNro1/procesado
 	cp $(pwd)/consolidar.sh $HOME/EPNro1
-
+}
 mostrar_ordenados(){
 	if [[ ! -f "$filePath" ]]; then
 		echo "El archivo $FILENAME no existe."
@@ -88,13 +88,13 @@ while [[ $KEEP_WORKING == "Y" || $KEEP_WORKING == "y" ]] ; do
 			crear_entorno;;
 		2)
 			echo "opcion 2 seleccionada "
-                        opcion_dos;;
+            opcion_dos;;
 		3)
 			echo "opcion 3 seleccionada"
 			mostrar_ordenados ;;
 		4)
 			echo "opcion 4 seleccionada "
-                        mostrar_top10 ;; 
+            mostrar_top10 ;; 
 
 		5)
 			echo "opcion 5 seleccionada"
