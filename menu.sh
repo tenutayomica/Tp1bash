@@ -4,31 +4,30 @@ MENU="Elige uno:\n\t(1) Crear entorno.\n\t(2) Correr proceso\n\t(3) Mostrar list
 OPTION=0
 KEEP_WORKING='y'
 INITIAL_FLAG='n'
+ARCHIVE = "$HOME/EPNro1/salida/${FILENAME}.txt"
+
 
 mostrar_ordenados(){
-	if [[ ! -f "$FILENAME" ]]; then
+	if [[ ! -f "$ARCHIVE" ]]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
 	echo "Listado de alumnos ordenados por número de padrón:"
-	sort -n "$FILENAME" | column -t -s ' '
+	sort -n "$ARCHIVE" | column -t -s ' '
 }
 
 mostrar_top10(){
-	if [[ ! -f "$FILENAME" ]]; then
+	if [[ ! -f "$ARCHIVE" ]]; then
 		echo "El archivo $FILENAME no existe."
 		return 1;
 	fi
 		echo "Las 10 notas más altas:"
-		sort -k5 -rn "$FILENAME" | head -10 | column -t -s ' '	
+		sort -k5 -rn "$ARCHIVE" | head -10 | column -t -s ' '	
 }
 
 opcion_dos(){
  if [[ -d "$HOME/EPNro1" ]]; then
-     echo "ingrese nombre para nuevo archivo"
-     read nombrearch
-     bash "$HOME/EPNro1/consolidar.sh" "$nombrearch" & 
-	export FILENAME="$HOME/EPNro1/salida/${nombrearch}.txt"
+     bash "$HOME/EPNro1/consolidar.sh" "$FILENAME" & 
  else
     echo "crear entorno seleccionando opción 1"
  fi

@@ -1,4 +1,4 @@
-#! bin/bash
+#!/bin/bash
 
 nom="$1"
 FILENAME="$HOME/EPNro1/salida/${nom}.txt"
